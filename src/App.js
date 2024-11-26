@@ -2,6 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import CustomNavbar from './components/CustomNavbar.jsx';
 import MyFooter from './components/MyFooter.jsx';
 import Welcome from './components/Welcome.jsx';
+import AllTheBooks from './components/AllTheBooks.jsx';
 
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
       </header>
       <main>
         <Welcome></Welcome>
+        <AllTheBooks></AllTheBooks>
       </main>
       <footer>
         <MyFooter></MyFooter>
