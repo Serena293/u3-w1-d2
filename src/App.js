@@ -1,5 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import CustomNavbar from './components/CustomNavbar.jsx';
+import MyFooter from './components/MyFooter.jsx';
+import Welcome from './components/Welcome.jsx';
 
 
 function App() {
@@ -8,7 +10,12 @@ function App() {
       <header>
       <CustomNavbar></CustomNavbar>
       </header>
-      <main></main>
+      <main>
+        <Welcome></Welcome>
+      </main>
+      <footer>
+        <MyFooter></MyFooter>
+      </footer>
     </div>
   );
 }
