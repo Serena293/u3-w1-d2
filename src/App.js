@@ -8,6 +8,7 @@ function App() {
       <header>
       <CustomNavbar></CustomNavbar>
       </header>
+      <main></main>
     </div>
   );
 }
