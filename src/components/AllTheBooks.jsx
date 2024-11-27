@@ -1,26 +1,43 @@
-import React from "react";
-import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
+import React, { Component } from "react";
+import SingleBook from "./SingleBook";
 import horror from "../books/history.json";
 
-const AllTheBooks = (props) => {
-  return (
-    <div className="d-flex flex-wrap">
-      {horror.map((book) => (
-        <Card key={book.asin} style={{ width: "18rem", margin: "10px" }}>
-          <Card.Img variant="top" src={book.img} alt={book.title} />
-          <Card.Body>
-            <Card.Title>{book.title}</Card.Title>
-            <Card.Text>
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </Card.Text>
-            <Button variant="primary">Add to Cart</Button>
-          </Card.Body>
-        </Card>
-      ))}
-    </div>
-  );
-};
+class AllTheBooks extends Component {
+  state = {
+    selectedBooks: [], // Array to track selected books
+  };
+
+  handleSelect = (bookId) => {
+    this.setState((prevState) => {
+      const { selectedBooks } = prevState;
+      if (selectedBooks.includes(bookId)) {
+        // If the book is already selected, remove it
+        return {
+          selectedBooks: selectedBooks.filter((id) => id !== bookId),
+        };
+      } else {
+        // If the book is not selected, add it
+        return {
+          selectedBooks: [...selectedBooks, bookId],
+        };
+      }
+    });
+  };
+
+  render() {
+    return (
+      <div className="d-flex flex-wrap">
+        {horror.map((book) => (
+          <SingleBook
+            key={book.asin}
+            book={book}
+            isSelected={this.state.selectedBooks.includes(book.asin)} // Check if the book is in the selectedBooks array
+            onSelect={() => this.handleSelect(book.asin)} // Pass book ID to handleSelect
+          />
+        ))}
+      </div>
+    );
+  }
+}
 
 export default AllTheBooks;
